@@ -1,18 +1,18 @@
 # Site settings
 title: HY Blog
-SEOTitle: 黄云的博客 | HY Blog
-header-img: img/post-bg-desk.jpg
+SEOTitle: HY's Blog
+header-img: img/home-bg-art.jpg
 email: huangy7@outlook.com
-description: "Every failure is leading towards success."
-keyword: "HY, HY Blog, 黄云的博客, iOS, Apple, iPhone"
+description: "Keep Inner Peace."
+keyword: "HY, HY Blog, 黄云的博客"
 url: "http://huangy7.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/huangy7/huangy7.github.io" # you code repository
+#github_repo: "https://github.com/huangy7/huangy7.github.io" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Goals determine what you going to be!"
-sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "Le vent se lève, il faut tenter de vivre."
+sidebar-avatar: /img/header.jpg     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -20,10 +20,10 @@ sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's us
 RSS: false
 # weibo_username:     qiubaiying
 #zhihu_username:     qiubaiying
-github_username:    huangy7
+#github_username:    huangy7
 #facebook_username:  baiying.qiu.7
 #jianshu_username:   e71990ada2fd
-#twitter_username:   qiubaiying
+#twitter_username:   黄云
 
 
 
@@ -99,16 +99,16 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "WY",
-        href: "http://zhengwuyang.com"
+        title: "zsy",
+        href: "http://www.zsythink.net/"
     },{
-        title: "简书·BY",
-        href: "http://www.jianshu.com/u/e71990ada2fd"
+        title: "kubernetes",
+        href: "https://feisky.gitbooks.io/kubernetes/introduction/"
     },{
-        title: "Apple",
-        href: "https://apple.com"
+        title: "GoWeb",
+        href: "https://www.chaindesk.cn/witbook/17"
     },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
+        title: "the-way-to-go",
+        href: "https://github.com/unknwon/the-way-to-go_ZH_CN"
     }
 ]

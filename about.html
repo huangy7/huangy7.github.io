@@ -1,100 +1,76 @@
 ---
 layout: page
 title: "About"
-description: "Hey, this is BY."
-header-img: "img/post-bg-rwd.jpg"
+description: "Hey, this is HY."
+header-img: "img/home-bg-o.jpg"
 ---
 
 <!-- Language Selector -->
-<!-- <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
     <option value="0" selected> 中文 Chinese </option>
-    <option value="1"> 英文 English </option>
-</select> -->
+    <option value="1"> 英语 English </option>
+</select>
 
 <!-- Chinese Version -->
 <div class="zh post-container">
+    <blockquote>
+        怕摔的人永远学不会走路，怕摔，就只能坐在地上看别人奔跑。
+    </blockquote>
+    <p>
+        愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者流的话。<br>能做事的做事，能发声的发声。<br>有一分热，发一分光。<br>就令萤火一般，也可以在黑暗里发一点光。<br>不必等候炬火<br>此后如竟没有炬火，我便是唯一的光。
+    </p>
 
-    <!--copied from markdown -->
-    <blockquote><p>冰冻三尺 非一日之寒<br>
-    积土成山 非斯须之作</p></blockquote>
+    <p style="text-align:right;">
+        —— 鲁迅
+    </p>
 
-    <p>Hey，我是<strong>柏荧(BY)</strong>，一只iOS程序猿，现在厦门工作。</p>
+    <p>
+    期待在下面评论框看到你想对我说的话！  ☟  
+    </p>
 
-    <p>工作、学习之余，我还是一个健身爱好者，同时也非常喜欢拳击。</p>
-
-    <p>这是我的利用 <a href="https://pages.github.com/">GitHub Pages</a> 与 <a href="http://jekyll.com.cn/">Jekyll</a> 搭建的 个人博客。我在GitHub主页<a href="https://github.com/qiubaiying">👉GitHub·BY</a> 与 简书主页<a href="https://http://www.jianshu.com/u/e71990ada2fd">👉BY</a>。如果有什么问题，欢迎提出探讨~</p>
-
-    <p></p>
-    
-    <h5>Talks</h5>
-
-    <ul>
-        <li><a href="https://github.com">GitHub</a></li>
-        <li><a href="http://jekyll.com.cn/">jekyll</a></li>
-        <li><a href="http://huangxuan.me/">Hux</a></li> 
-        <li><a href="https://analytics.google.com/analytics">Google Analytics</a></li>
-    </ul>
 </div>
 
 <!-- English Version -->
-<!-- <div class="en post-container">
-    <blockquote><p>Yet another iOS Developer. <br>
-    Yet another Life-long Student.</p></blockquote>
+<div class="en post-container">
+    <blockquote>
+        Engineer.Working in jimei xiamen.
+    </blockquote>
 
-    <p>Hi, I am <strong>Baiying Qiu</strong>，you can call me <strong>BY</strong>. I am an iOS software engineer and currently working in Xiamen</p>
+    <p>
+    When I'm scared to tackle an obstacle, I close my eyes and pretend im an 80 year old man who regrets not tackling all the obstacles he wanted to in life. Then when I feel like that old man, I say to myself, "I wish I was young again", then I open my eyes....And BOOM! I'm young again.
+    </p>
+    <p style="text-align:right;">
+        —— <a href="https://www.facebook.com/hellohopsin/posts/when-im-scared-to-tackle-an-obstacle-i-close-my-eyes-and-pretend-im-an-80-year-o/666505283365269/">Hopsin － facebook </a>
+    </p>
 
-    <p>This is my personal blog, through making Github Pages and Jekyll.My GitHub  👉 <a href="http://github.com/qiubaiying">Github·BY</a>.</p>
-    
-    <p>I am a sports enthusiast, I like fitness, running and boxing.</p>
+    <p>
+    In fact, the following ☟ words are my favorite. <br><br> 一般来说呢，我们还需要再吃两顿饭，才能一起去酒店开房，可是呢，我没有那么多时间啊。我这就给你接下来两次的饭钱和房钱，我们现在就干好吗？
+    </p>
 
-    <h5>Talks</h5>
+    <p style="text-align:right;">
+        —— <a href="https://www.bgee.cc/juben/20190426/171984.html">北野武 － 北野武的小酒馆 </a>
+    </p>
 
-    <ul>
-    <li><a href="https://github.com">GitHub</a></li>
-    <li><a href="http://jekyll.com.cn/">jekyll</a></li>
-    <li><a href="https://pages.github.com/">GitHub Pages</a></li>
-    <li><a href="https://qiubaiying.github.io">BY</a></li>
-    </ul>
-</div> -->
+    <p>
+    Looking forward to seeing what you want to say to me in the comment box below!   ☟  
+    </p>
+
+</div>
 
 <!-- Handle Language Change -->
 <script type="text/javascript">
-    // get nodes
     var $zh = document.querySelector(".zh");
     var $en = document.querySelector(".en");
-    var $select = document.querySelector("select");
-
-    // bind hashchange event
-    window.addEventListener('hashchange', _render);
-
-    // handle render
-    function _render(){
-        var _hash = window.location.hash;
-        // en
-        if(_hash == "#en"){
-            $select.selectedIndex = 1;
-            $en.style.display = "block";
-            $zh.style.display = "none";
-        // zh by default
-        }else{
-            // not trigger onChange, otherwise cause a loop call.
-            $select.selectedIndex = 0;
-            $zh.style.display = "block";
-            $en.style.display = "none";
-        }
-    }
-
-    // handle select change
     function onLanChange(index){
         if(index == 0){
-            window.location.hash = "#zh"
+            $zh.style.display = "block";
+            $en.style.display = "none";
         }else{
-            window.location.hash = "#en"
+            $en.style.display = "block";
+            $zh.style.display = "none";
         }
     }
-
-    // init
-    _render();
+    onLanChange(0);
 </script>
 
 

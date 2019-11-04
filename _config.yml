@@ -98,9 +98,6 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "zsy",
-        href: "http://www.zsythink.net/"
-    },{
         title: "kubernetes",
         href: "https://feisky.gitbooks.io/kubernetes/introduction/"
     },{
@@ -109,5 +106,11 @@ friends: [
     },{
         title: "the-way-to-go",
         href: "https://github.com/unknwon/the-way-to-go_ZH_CN"
+    },{
+        title: "zsy",
+        href: "http://www.zsythink.net/"
+    },{
+        title: "cshihong",
+        href: "https://cshihong.github.io"
     }
 ]

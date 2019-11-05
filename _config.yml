@@ -21,9 +21,9 @@ RSS: false
 # weibo_username:     
 #zhihu_username:     
 #github_username:    huangy7
-#facebook_username:  
-#jianshu_username:   
-#twitter_username:   黄云
+facebook_username:  黄云
+jianshu_username: 1c01c37eb316   
+twitter_username:   黄云
 
 
 
@@ -112,5 +112,8 @@ friends: [
     },{
         title: "cshihong",
         href: "https://cshihong.github.io"
+    },{
+        title: "emoji",
+        href: "https://www.webfx.com/tools/emoji-cheat-sheet/"
     }
 ]

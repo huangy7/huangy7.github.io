@@ -18,7 +18,7 @@ tags:
 # 使用
 1.为网卡eth0配置一个htb队列
 
-```
+```bash
 tc qdisc add dev eth0 root handle 1: htb default 11
 # root 表示为eth0添加的是一个根队列
 # handle 1: 这个根队列的句柄是1:
@@ -27,7 +27,7 @@ tc qdisc add dev eth0 root handle 1: htb default 11
 ```
 2.为根队列创建类别
 
-```sh
+```bash
 tc class add dev eth0 parent 1: classid 1:1 htb rate 40mbit ceil 40mbit  
 tc class add dev eth0 parent 1: classid 1:12 htb rate 40mbit ceil 40mbit  
 tc class add dev eth0 parent 1: cllassid 1:13 htb rate 20mbit ceil 20mbit
@@ -38,7 +38,7 @@ tc class add dev eth0 parent 1: cllassid 1:13 htb rate 20mbit ceil 20mbit
 ```
 3.创建过滤器
 
-```
+```bash
 #ip限速
 tc filter add dev rhpvif1 protocol ip parent 1:0 prio 1 u32 match ip dst 10.0.0.2/32 flowid 1:11
 tc filter add dev rhpvif1 protocol ip parent 1:0 prio 1 u32 match ip dst 10.0.0.2/32 match ip src 10.0.0.2/32 flowid 1:11
@@ -58,7 +58,7 @@ tc filter add dev rhpvif1 protocol ip parent 1:10 prio 1 u32 match ip match ip p
 
 # 更高级一点的
 
-```
+```bash
 tc qdisc add dev eth0 root handle 1: htb default 21  
 tc class add dev eth0 partent 1: classid 1:1 htb rate 20mbit ceil 20mbit  
 tc class add dev eth0 parent 1: classid 1:2 htb rate 80mbit ceil 80mbit  

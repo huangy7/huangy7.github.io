@@ -36,10 +36,19 @@ tc class add dev eth0 parent 1: cllassid 1:13 htb rate 20mbit ceil 20mbit
 # "rate 40mbit", 表示系统将为该类别确保带宽40mbit
 # "ceil 40mbit"，表示该类别的最高可占用带宽为40mbit。
 ```
-3.创建过滤器
+
+3.为每一个类设置sfq，使用随机公平队列，保证不会有某一个回话独占出口带宽
+```bash
+#为了避免一个会话永占带宽,添加随即公平队列sfq.
+tc qdisc add dev eth0 parent 1:10 handle 10: sfq perturb 10
+#perturb：是多少秒后重新配置一次散列算法，默认为10秒
+#sfq,他可以防止一个段内的一个ip占用整个带宽
+```
+
+4.创建过滤器
 
 ```bash
-#ip限速
+#ip限速，使用u32创建过滤器
 tc filter add dev rhpvif1 protocol ip parent 1:0 prio 1 u32 match ip dst 10.0.0.2/32 flowid 1:11
 tc filter add dev rhpvif1 protocol ip parent 1:0 prio 1 u32 match ip dst 10.0.0.2/32 match ip src 10.0.0.2/32 flowid 1:11
 #端口限速
@@ -50,7 +59,10 @@ tc filter add dev rhpvif1 protocol ip parent 1:10 prio 1 u32 match udp match ip 
 tc filter add dev rhpvif1 protocol ip parent 1:10 prio 1 u32 match ip match ip protocol 1 0xff flowid 1:11
 tc filter add dev rhpvif1 protocol ip parent 1:10 prio 1 u32 match ip match ip protocol 6 0xff flowid 1:11
 tc filter add dev rhpvif1 protocol ip parent 1:10 prio 1 u32 match ip match ip protocol 8 0xff flowid 1:11
-
+#iptables打mark限速
+tc filter add dev swtun1 protocol ip parent1:0 prio 1 handle 1 fw classid 1:11
+#高优先级流量打mark
+iptables -t mangle -A POSTROUTING -p tcp -m tcp --sport 9998 -o swtun1 -j MARK --set-mark 1
 # protocol IP 表示这个过滤器要检查协议字段
 # prio 优先级，系统由小到大
 # u32选择器 来匹配不同的数据流
@@ -63,7 +75,7 @@ tc qdisc add dev eth0 root handle 1: htb default 21
 tc class add dev eth0 partent 1: classid 1:1 htb rate 20mbit ceil 20mbit  
 tc class add dev eth0 parent 1: classid 1:2 htb rate 80mbit ceil 80mbit  
 tc class add dev eth0 parent 1:2 classid 1:21 htb rate 40mbit ceil 80mbit  
-#tc class add dev eth0 parent 1:2 classid 1:22 htb rate 40mbit ceil 80mbit  
+tc class add dev eth0 parent 1:2 classid 1:22 htb rate 40mbit ceil 80mbit  
 tc filter add dev eth0 protocol parent 10 prio 1 u32 match ip dport 80 0xffff flowid 1:21  
 tc filter add dev eth0 protocol parent 1:0 prio 1 u32 match ip dport 25 0xffff flowid 1:22  
 tc filter add dev eth0 protocol parent 1:0 prio 1 u32 match ip dport 23 0xffff flowid 1:1
